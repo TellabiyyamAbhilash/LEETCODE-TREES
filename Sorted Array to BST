@@ -6,16 +6,21 @@
 #         self.right = right
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+    
+# if nothong the array simple return the none value , which will be empty child of a node or a empty tree    
         
         if not nums:
             return None
         
+# we actualy add the mid element of the each array as a node to the tree.  
+
         l=0
         r=len(nums)-1
         mid=(l+r)//2
         
         t=TreeNode(nums[mid])
-        
+#recursively we add the left and right child to the tree
+
         t.left=self.sortedArrayToBST(nums[:mid])
         t.right=self.sortedArrayToBST(nums[mid+1:])
         
